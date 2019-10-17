@@ -31,9 +31,9 @@ function productSearch() {
             name: "index2"
         }
     ]).then(response => {
-        connection.query("SELECT * FROM bamazon.products", [response.index1,response.index2], function(err,res) {
+        connection.query("SELECT * FROM bamazon.products WHERE item_id=1;", [response.index1,response.index2], function(err,res) {
             if(err) throw err;
-            if(res) console.log(JSON.stringify(res,null,4));
+            if(res) console.log(JSON.stringify(res,null,10));
             else console.log("Insufficient quantity!");
 
         })
