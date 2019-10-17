@@ -1,6 +1,6 @@
 //This code is strongly inspired by the class about the song and album databases
 var inquirer = require("inquirer");
-var mysql = require('mysql');
+var mysql = require("mysql");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -9,15 +9,13 @@ var connection = mysql.createConnection({
 
     user: "root",
   
-    password: "",
+    password: "Putain815",
     database: "bamazon"
   });
 
   connection.connect(function(err) {
     if (err) throw err;
   });
-
-
 
 
 function productSearch() {
@@ -33,7 +31,7 @@ function productSearch() {
             name: "index2"
         }
     ]).then(response => {
-        connection.query("SELECT * FROM top5000 WHERE position >= ? AND position <= ?", [response.index1,response.index2], function(err,res) {
+        connection.query("SELECT * FROM bamazon WHERE item_id", [response.index1,response.index2], function(err,res) {
             if(err) throw err;
             if(res) console.log(JSON.stringify(res,null,4));
             else console.log("No results");
@@ -41,5 +39,5 @@ function productSearch() {
         })
     })
 }
-​
+
 productSearch();
