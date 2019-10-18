@@ -23,15 +23,15 @@ function productSearch() {
         {
             type: "number",
             message: "What is the id of the product you would like to buy ?",
-            name: "index1"
+            name: "x1"
         },
         {
             type: "number",
             message: "How many units of this product would you like to buy",
-            name: "index2"
+            name: "x2"
         }
     ]).then(response => {
-        connection.query("SELECT * FROM bamazon.products WHERE item_id=1;", [response.index1,response.index2], function(err,res) {
+        connection.query("SELECT * FROM bamazon.products WHERE item_id=?", [response.x1,response.x2], function(err,res) {
             if(err) throw err;
             if(res) console.log(JSON.stringify(res,null,10));
             else console.log("Insufficient quantity!");
