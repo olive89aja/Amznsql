@@ -33,13 +33,22 @@ function productSearch() {
     ]).then(response => {
         connection.query("SELECT * FROM bamazon.products WHERE item_id=? AND stock_quantity>=?", [response.x1,response.x2], function(err,res) {
             if(err) throw err;
-            if(res) console.log("Here are yor results" + JSON.stringify(res,null,10));
-            else console.log("Insufficient quantity!");
-         
+            if(res) console.log("Here are your results" + JSON.stringify(res,null,10));
+                 
+            else console.log("Insufficient quantity!"); 
+           
+            //To remember what the user decided to input
+            console.log(response); 
+        
         })
+
+      
     })
-   
-}
+    // connection.query("UPDATE stock_quantity WHERE item_id=?", [response.x2,response.x1], function(err,res) {
+    //     if(err) throw err;
+    //     if(res) console.log("Thank you for your purchase");
+    //     else console.log("Have a nice day"); 
+}//)}
 
 productSearch();
 
