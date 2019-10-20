@@ -35,24 +35,25 @@ function productSearch() {
     ]).then(response => {
         connection.query("SELECT * FROM bamazon.products WHERE item_id=? AND stock_quantity>=?", [response.x1,response.x2], function(err,res) {
             if(err) throw err;
-            console.log("Here are your results" + JSON.stringify(res,null,10));
+            console.log("Welcome to our store, these are your results based on your answers : ")
+            console.log(JSON.stringify(res,null,10));
         
             if(res.length === 0) {console.log("Insufficient quantity!"); }
    
-   console.log(response.x2);
+   //console.log(response.x2);
 //    var store=res;
 //    console.log(store.price);
 console.log("You bought " + response.x2 + res[0].product_name + " and the cost was")
-console.log(res[0].price*response.x2);
+console.log("$" + res[0].price*response.x2);
 
-//product purchase
-        connection.query("UPDATE bamazon.products SET stock_quantity = stock_quantity -1 WHERE item_id=?", [response.x1], function(err,res) {
+var inventory=res[0].stock_quantity - response.x2;
+console.log("Only " + inventory + " left");  
+//product purchase 
+         connection.query("UPDATE bamazon.products SET stock_quantity = stock_quantity -? WHERE item_id=?", [response.x2,response.x1], function(err,res) {
          if(err) throw err;
           //console.log("Number of products remaining" + JSON.stringify(res,null,10));
-         console.log("Have a nice day");         
-          
-        
-        })
+         console.log("Have a nice day! Thank you for your business");   
+         })
 
       
     })
