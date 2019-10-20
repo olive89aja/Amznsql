@@ -42,11 +42,11 @@ function productSearch() {
    console.log(response.x2);
 //    var store=res;
 //    console.log(store.price);
-console.log("You bought 1 "+ res[0].product_name + " and the cost was")
-console.log(res[0].price);
+console.log("You bought " + response.x2 + res[0].product_name + " and the cost was")
+console.log(res[0].price*response.x2);
 
 //product purchase
-        connection.query("UPDATE bamazon.products SET stock_quantity = stock_quantity -1 WHERE item_id=1", function(err,res) {
+        connection.query("UPDATE bamazon.products SET stock_quantity = stock_quantity -1 WHERE item_id=?", [response.x1], function(err,res) {
          if(err) throw err;
           //console.log("Number of products remaining" + JSON.stringify(res,null,10));
          console.log("Have a nice day");         
