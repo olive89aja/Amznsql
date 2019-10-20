@@ -14,5 +14,5 @@ A customer buys 2 Dell computers<br>
 ![bamazonex2](https://user-images.githubusercontent.com/50233804/67154331-f3889280-f2bf-11e9-8735-2eaab5e0956d.png)
 
 
-A customer buys 2 movies
+A customer buys 2 movies<br>
 ![bamazonex3](https://user-images.githubusercontent.com/50233804/67154332-f4b9bf80-f2bf-11e9-800d-772c102e5fa5.png)
